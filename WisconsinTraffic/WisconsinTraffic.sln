@@ -7,14 +7,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WITraffic511.Api", "Wiscons
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Azure", "Azure", "{BB673D0C-9F3B-431E-847F-FE1A3C7C2488}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WITraffic511.Api.Tests", "WITraffic511.Api.Tests\WITraffic511.Api.Tests.csproj", "{119FA248-2F45-455B-91D6-5552B2D7C887}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{37E4E1E9-9785-468F-8C57-5F5FF32D0B56}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\packages.config = .nuget\packages.config
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WisconsinTraffic.Azure.WebApi", "WisconsinTraffic.Azure.WebApi\WisconsinTraffic.Azure.WebApi.csproj", "{BA20264D-9166-4356-A698-823D630A9A66}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WITraffic511.Api.Tests", "WITraffic511.Api.Tests\WITraffic511.Api.Tests.csproj", "{119FA248-2F45-455B-91D6-5552B2D7C887}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,16 +38,6 @@ Global
 		{884206FB-4A17-4A82-8DEC-50EA4B1CB5B7}.Release|ARM.ActiveCfg = Release|Any CPU
 		{884206FB-4A17-4A82-8DEC-50EA4B1CB5B7}.Release|x64.ActiveCfg = Release|Any CPU
 		{884206FB-4A17-4A82-8DEC-50EA4B1CB5B7}.Release|x86.ActiveCfg = Release|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|Any CPU.Build.0 = Release|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|ARM.ActiveCfg = Release|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|x64.ActiveCfg = Release|Any CPU
-		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|x86.ActiveCfg = Release|Any CPU
 		{BA20264D-9166-4356-A698-823D630A9A66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BA20264D-9166-4356-A698-823D630A9A66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA20264D-9166-4356-A698-823D630A9A66}.Debug|ARM.ActiveCfg = Debug|Any CPU
@@ -58,13 +48,23 @@ Global
 		{BA20264D-9166-4356-A698-823D630A9A66}.Release|ARM.ActiveCfg = Release|Any CPU
 		{BA20264D-9166-4356-A698-823D630A9A66}.Release|x64.ActiveCfg = Release|Any CPU
 		{BA20264D-9166-4356-A698-823D630A9A66}.Release|x86.ActiveCfg = Release|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|ARM.ActiveCfg = Release|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|x64.ActiveCfg = Release|Any CPU
+		{119FA248-2F45-455B-91D6-5552B2D7C887}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{884206FB-4A17-4A82-8DEC-50EA4B1CB5B7} = {BB673D0C-9F3B-431E-847F-FE1A3C7C2488}
-		{119FA248-2F45-455B-91D6-5552B2D7C887} = {BB673D0C-9F3B-431E-847F-FE1A3C7C2488}
 		{BA20264D-9166-4356-A698-823D630A9A66} = {BB673D0C-9F3B-431E-847F-FE1A3C7C2488}
+		{119FA248-2F45-455B-91D6-5552B2D7C887} = {BB673D0C-9F3B-431E-847F-FE1A3C7C2488}
 	EndGlobalSection
 EndGlobal

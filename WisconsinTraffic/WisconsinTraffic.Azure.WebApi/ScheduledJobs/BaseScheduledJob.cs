@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using System.Web;
-using System.Web.Configuration;
 using System.Web.Http;
 using Microsoft.WindowsAzure.Mobile.Service;
+using PortableRest;
+using WisconsinTraffic.Azure.WebApi.Models;
 using WisconsinTraffic.Azure.WebApi.Utility;
 using WITraffic511.Api;
 
@@ -59,6 +58,32 @@ namespace WisconsinTraffic.Azure.WebApi.ScheduledJobs
         public virtual Task Execute()
         {
             return Task.FromResult(true);
+        }
+
+        protected async Task ProcessResponse<T>(RestResponse<List<T>> response, string identifier) where T : class
+        {
+            if (response.HttpResponseMessage.IsSuccessStatusCode)
+            {
+                var doc = new TrafficDocument<T>()
+                {
+                    Id = identifier,
+                    Items = response.Content,
+                    Timestamp = DateTime.UtcNow.AddHours(-5)
+                };
+
+                using (var db = new TrafficDocumentProvider())
+                {
+                    await db.Init();
+                    await db.Save(doc);
+                }
+                Services.Log.Info(identifier + "Job Complete.", category: identifier + "Job.Execute()");
+            }
+            else
+            {
+                var sb = new StringBuilder();
+                response.Exception.WriteExceptionDetails(sb, 0);
+                Services.Log.Error(sb.ToString());
+            }
         }
     }
 }

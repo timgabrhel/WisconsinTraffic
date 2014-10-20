@@ -212,19 +212,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AlertsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
+    <Compile Include="Controllers\CamerasController.cs" />
+    <Compile Include="Controllers\IncidentsController.cs" />
+    <Compile Include="Controllers\MainlineLinksController.cs" />
+    <Compile Include="Controllers\MessageSignsController.cs" />
+    <Compile Include="Controllers\RoadwaysController.cs" />
+    <Compile Include="Controllers\RoadworkController.cs" />
     <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\MainlineRoutesController.cs" />
+    <Compile Include="Controllers\WinterRoadConditionsController.cs" />
+    <Compile Include="Models\IncidentsJob.cs" />
+    <Compile Include="Models\TrafficDocument.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\TrafficResult.cs" />
     <Compile Include="Models\TodoItem.cs" />
     <Compile Include="Models\MobileServiceContext.cs" />
-    <Compile Include="Models\TrafficDocument.cs" />
+    <Compile Include="ScheduledJobs\AlertsJob.cs" />
     <Compile Include="ScheduledJobs\BaseScheduledJob.cs" />
-    <Compile Include="ScheduledJobs\MainlineRoutesJob.cs" />
+    <Compile Include="ScheduledJobs\CamerasJob.cs" />
+    <Compile Include="ScheduledJobs\MainlineLinksJob.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScheduledJobs\MainlineRoutesJob.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScheduledJobs\MessageSignsJob.cs" />
+    <Compile Include="ScheduledJobs\RoadwaysJob.cs" />
+    <Compile Include="ScheduledJobs\RoadworkJob.cs" />
+    <Compile Include="ScheduledJobs\WinterRoadConditionsJob.cs" />
     <Compile Include="Utility\Extensions.cs" />
     <Compile Include="Utility\LoggingService.cs" />
     <Compile Include="Utility\TrafficDocumentProvider.cs" />
