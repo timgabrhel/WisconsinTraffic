@@ -8,7 +8,7 @@ namespace WisconsinTraffic.Azure.WebApi.ScheduledJobs
         public override async Task Execute()
         {
             var response = await ApiClient.GetAlertsAsync();
-            await ProcessResponse(response, AlertsController.Identifier);
+            //await ProcessResponse(response, AlertsController.Identifier);
         }
     }
 }

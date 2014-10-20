@@ -1,8 +1,7 @@
 ﻿using System.Threading.Tasks;
 using WisconsinTraffic.Azure.WebApi.Controllers;
-using WisconsinTraffic.Azure.WebApi.ScheduledJobs;
 
-namespace WisconsinTraffic.Azure.WebApi.Models
+namespace WisconsinTraffic.Azure.WebApi.ScheduledJobs
 {
     public class IncidentsJob : BaseScheduledJob
     {

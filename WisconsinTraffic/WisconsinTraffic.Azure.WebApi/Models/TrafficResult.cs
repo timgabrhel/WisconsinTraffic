@@ -24,8 +24,16 @@ namespace WisconsinTraffic.Azure.WebApi.Models
 
         internal TrafficResult(TrafficDocument<T> doc)
         {
-            Items = doc.Items;
-            Timestamp = doc.Timestamp;
+            if (doc == null)
+            {
+                Timestamp = DateTime.UtcNow.AddHours(-5);
+                Items = new List<T>();
+            }
+            else
+            {
+                Items = doc.Items;
+                Timestamp = doc.Timestamp;
+            }
         }
     }
 }

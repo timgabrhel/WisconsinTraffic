@@ -220,16 +220,15 @@
     <Compile Include="Controllers\MessageSignsController.cs" />
     <Compile Include="Controllers\RoadwaysController.cs" />
     <Compile Include="Controllers\RoadworkController.cs" />
-    <Compile Include="Controllers\TodoItemController.cs" />
     <Compile Include="Controllers\MainlineRoutesController.cs" />
     <Compile Include="Controllers\WinterRoadConditionsController.cs" />
-    <Compile Include="Models\IncidentsJob.cs" />
+    <Compile Include="DocumentDb\DocumentController.cs" />
+    <Compile Include="DocumentDb\DocumentEntityDomainManager.cs" />
+    <Compile Include="Models\TrafficResult.cs" />
+    <Compile Include="ScheduledJobs\IncidentsJob.cs" />
     <Compile Include="Models\TrafficDocument.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Models\TrafficResult.cs" />
-    <Compile Include="Models\TodoItem.cs" />
-    <Compile Include="Models\MobileServiceContext.cs" />
     <Compile Include="ScheduledJobs\AlertsJob.cs" />
     <Compile Include="ScheduledJobs\BaseScheduledJob.cs" />
     <Compile Include="ScheduledJobs\CamerasJob.cs" />

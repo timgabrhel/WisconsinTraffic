@@ -6,27 +6,20 @@ using System.Net.Http;
 using System.ServiceModel.Channels;
 using System.Threading.Tasks;
 using System.Web.Http;
+using WisconsinTraffic.Azure.WebApi.Models;
 using WITraffic511.Api.Models;
 
 namespace WisconsinTraffic.Azure.WebApi.Controllers
 {
-    public class MessageSignsController : BaseApiController
+    public class MessageSignsController : BaseApiController<MessageSign>
     {
         public static string Identifier = "MessageSigns";
 
         [AllowAnonymous]
-        public async Task<HttpResponseMessage> Get()
+        public HttpResponseMessage Get()
         {
-            try
-            {
-                var result = await GetTrafficResultAsync<MessageSign>(Identifier);
-                return ControllerContext.Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception ex)
-            {
-                Services.Log.Error(ex, category: "MessageSignsController.Get()");
-                return ControllerContext.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-            }
-        } 
+            var doc = Lookup(Identifier).Queryable.AsEnumerable().FirstOrDefault();
+            return ControllerContext.Request.CreateResponse(HttpStatusCode.OK, new TrafficResult<MessageSign>(doc));
+        }
     }
 }

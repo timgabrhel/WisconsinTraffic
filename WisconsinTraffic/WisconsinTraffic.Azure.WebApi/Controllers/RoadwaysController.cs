@@ -5,27 +5,20 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using WisconsinTraffic.Azure.WebApi.Models;
 using WITraffic511.Api.Models;
 
 namespace WisconsinTraffic.Azure.WebApi.Controllers
 {
-    public class RoadwaysController : BaseApiController
+    public class RoadwaysController : BaseApiController<Roadway>
     {
         public static string Identifier = "Roadways";
 
         [AllowAnonymous]
-        public async Task<HttpResponseMessage> Get()
+        public HttpResponseMessage Get()
         {
-            try
-            {
-                var result = await GetTrafficResultAsync<Roadway>(Identifier);
-                return ControllerContext.Request.CreateResponse(HttpStatusCode.OK, result);
-            }
-            catch (Exception ex)
-            {
-                Services.Log.Error(ex, category: "RoadwaysController.Get()");
-                return ControllerContext.Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex);
-            }
-        } 
+            var doc = Lookup(Identifier).Queryable.AsEnumerable().FirstOrDefault();
+            return ControllerContext.Request.CreateResponse(HttpStatusCode.OK, new TrafficResult<Roadway>(doc));
+        }
     }
 }
