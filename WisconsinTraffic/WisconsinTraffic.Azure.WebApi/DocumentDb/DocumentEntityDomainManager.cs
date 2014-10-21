@@ -13,19 +13,16 @@ namespace WisconsinTraffic.Azure.WebApi.DocumentDb
 {
     public class DocumentEntityDomainManager<TDocument> where TDocument : Resource
     {
-        public HttpRequestMessage Request { get; set; }
         public ApiServices Services { get; set; }
-
-
+        
         private string _collectionId;
         private string _databaseId;
         private Database _database;
         private DocumentCollection _collection;
         private DocumentClient _client;
 
-        public DocumentEntityDomainManager(string databaseId, string collectionId, HttpRequestMessage request, ApiServices services)
+        public DocumentEntityDomainManager(string databaseId, string collectionId, ApiServices services)
         {
-            Request = request;
             Services = services;
             _collectionId = collectionId;
             _databaseId = databaseId;
@@ -56,13 +53,26 @@ namespace WisconsinTraffic.Azure.WebApi.DocumentDb
             }
         }
 
+        public bool Exists(string id)
+        {
+            try
+            {
+                var doc = GetDocument(id);
+
+                return doc != null;
+            }
+            catch (Exception ex)
+            {
+                Services.Log.Error(ex);
+                throw new HttpResponseException(System.Net.HttpStatusCode.InternalServerError);
+            }
+        }
+
         public async Task<Document> InsertAsync(TDocument data)
         {
             try
             {
                 return await Client.CreateDocumentAsync(Collection.SelfLink, data);
-
-
             }
             catch (Exception ex)
             {
@@ -80,8 +90,6 @@ namespace WisconsinTraffic.Azure.WebApi.DocumentDb
                     .Where(d => d.Id == id)
                     .Select<TDocument, TDocument>(d => d)
                     );
-
-
             }
             catch (Exception ex)
             {
@@ -123,7 +131,6 @@ namespace WisconsinTraffic.Azure.WebApi.DocumentDb
                 await Client.ReplaceDocumentAsync(doc.SelfLink, item);
 
                 return true;
-
             }
             catch (Exception ex)
             {
@@ -148,8 +155,8 @@ namespace WisconsinTraffic.Azure.WebApi.DocumentDb
             {
                 if (_client == null)
                 {
-                    string endpoint = ConfigurationManager.AppSettings["endpointurl"];
-                    string authKey = ConfigurationManager.AppSettings["authorizationkey"];
+                    string endpoint = ConfigurationManager.AppSettings["WITrafficDocumentDbUrl"];
+                    string authKey = ConfigurationManager.AppSettings["WITrafficDocumentAuthKey"];
                     Uri endpointUri = new Uri(endpoint);
                     _client = new DocumentClient(endpointUri, authKey);
                 }

@@ -15,7 +15,22 @@ namespace WisconsinTraffic.Azure.WebApi.Controllers
         protected override void Initialize(HttpControllerContext controllerContext)
         {
             base.Initialize(controllerContext);
-            DomainManager = new DocumentEntityDomainManager<TrafficDocument<T>>("witrafficdb", "witrafficcoll", Request, Services);
+
+            string WITrafficDocumentDbName;
+            if (!(Services.Settings.TryGetValue("WITrafficDocumentDbName", out WITrafficDocumentDbName)))
+            {
+                Services.Log.Error("Could not retrieve WITrafficDocumentDbName", category: LogCategories.Controllers);
+                return;
+            }
+
+            string WITrafficDocumentDbCollectionName;
+            if (!(Services.Settings.TryGetValue("WITrafficDocumentDbCollectionName", out WITrafficDocumentDbCollectionName)))
+            {
+                Services.Log.Error("Could not retrieve WITrafficDocumentDbCollectionName", category: LogCategories.Controllers);
+                return;
+            }
+
+            DomainManager = new DocumentEntityDomainManager<TrafficDocument<T>>(WITrafficDocumentDbName, WITrafficDocumentDbCollectionName, Services);
         }
     }
 }

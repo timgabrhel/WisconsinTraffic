@@ -41,6 +41,7 @@ namespace WisconsinTraffic.Azure.WebApi.DocumentDb
 		/// </summary>
 		protected DocumentController()
 		{
+            
 		}
 		
 		
@@ -81,6 +82,24 @@ namespace WisconsinTraffic.Azure.WebApi.DocumentDb
 				throw new HttpResponseException(HttpStatusCode.InternalServerError);
 			}
 		}
+
+        protected bool Exists(string id)
+        {
+            try
+            {
+                return this.DomainManager.Exists(id);
+            }
+            catch (HttpResponseException exception)
+            {
+                Services.Log.Error(exception, base.Request, LogCategories.TableControllers);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Services.Log.Error(ex, base.Request, LogCategories.TableControllers);
+                throw new HttpResponseException(HttpStatusCode.InternalServerError);
+            }   
+        }
 
         protected async virtual Task<Document> InsertAsync(TDocument item)
 		{

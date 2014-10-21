@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
+﻿using System.Threading.Tasks;
 using WisconsinTraffic.Azure.WebApi.Controllers;
+using WITraffic511.Api.Models;
 
 namespace WisconsinTraffic.Azure.WebApi.ScheduledJobs
 {
-    public class RoadwaysJob : BaseScheduledJob
+    public class RoadwaysJob : BaseScheduledJob<Roadway>
     {
         public override async Task Execute()
         {

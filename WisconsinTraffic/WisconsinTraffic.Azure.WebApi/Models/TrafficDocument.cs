@@ -10,9 +10,6 @@ namespace WisconsinTraffic.Azure.WebApi.Models
     [JsonObject]
     public class TrafficDocument<T> : Resource
     {
-        [JsonProperty("id")]
-        public string Id { get; set; }
-
         [JsonProperty]
         public DateTime Timestamp { get; set; }
 
